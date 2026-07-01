@@ -98,7 +98,7 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│                        TRÌNH DUYỆT NGƯỜI DÙNG                        │
+│                        TRÌNH DUYỆT NGƯỜI DÙNG                       │
 │                                                                     │
 │   ReactJS 19 + Vite 8 + Tailwind CSS 3.4 + Framer Motion + Recharts │
 │   37 trang JSX | 6 dashboard theo vai trò | Context API state       │
@@ -108,7 +108,7 @@
 ┌─────────────────────────────────────────────────────────────────────┐
 │                       BACKEND (SPRING BOOT)                         │
 │                                                                     │
-│   Java 21 + Spring Boot 3.2.5 + Spring Security 6 (JWT)            │
+│   Java 21 + Spring Boot 3.2.5 + Spring Security 6 (JWT)             │
 │   15 Controller → 15 Service → 17 Entity → Spring Data JPA          │
 │   Swagger UI | @PreAuthorize RBAC | BCrypt | GlobalExceptionHandler │
 └──────────────────────────────┬──────────────────────────────────────┘
@@ -427,9 +427,9 @@ volumes:
 
 | STT | MSSV | Họ và tên | Lập trình | Tài liệu | Đóng góp |
 |---|---|---|---|---|---|
-| 1 | 23012156 | Ngô Thị Minh Phương | Backend (10 Controller + 10 Service + 12 Entity) + Frontend (AppContext, api.js, 37 trang JSX, components) + Docker Compose | Chương 1 (24 use-case đặc tả, R0–R6) + Chương 3 (thiết kế: class diagram, ERD, API) + Chương 4 (cài đặt: công nghệ, design pattern, deployment). Biên tập và chỉnh sửa toàn bộ báo cáo. | 34% |
-| 2 | 23010871 | Nguyễn Thị Thu Giang | Frontend UI/UX (6 dashboard, Tailwind theme, Framer Motion, Recharts). Thiết kế toàn bộ sơ đồ (use-case, sequence, class, ERD, architecture, deployment). Kiểm thử tích hợp E2E. | Chương 2 (phân tích use-case, kiến trúc BCE) + Chương 5 (kết luận). Danh mục hình ảnh, danh mục bảng biểu. Slide thuyết trình (25 slide). README GitHub. | 34% |
-| 3 | 23010027 | Hoàng Như Quỳnh | Backend (5 Controller + 5 Service + 5 Entity: Auth, User, Campaign, Donation, Complaint). Security: JwtUtil, JwtFilter, SecurityConfig. Unit test. | Lời mở đầu, lời cảm ơn. Thuật ngữ (128 thuật ngữ). Yêu cầu phi chức năng NF1–NF8 (53 yêu cầu). Phạm vi dự án. | 32% |
+| 1 | 23012156 | Ngô Thị Minh Phương | Backend (10 Controller + 10 Service + 12 Entity) + Frontend (AppContext, api.js, 37 trang JSX, components) + Docker Compose. Thiết kế sơ đồ. Kiểm thử tích hợp E2E. | Chương 1 (24 use-case đặc tả, R0–R6) + Chương 3 (thiết kế: class diagram, ERD(35+ bảng)) + Chương 4 (cài đặt: công nghệ, design pattern, deployment). Biên tập và chỉnh sửa toàn bộ báo cáo. | 34% |
+| 2 | 23010871 | Nguyễn Thị Thu Giang | Frontend UI/UX (6 dashboard, Tailwind theme, Framer Motion, Recharts). Thiết kế sơ đồ (use-case, sequence, class, ERD, architecture, deployment). Kiểm thử tích hợp E2E. | Chương 2 (phân tích use-case, kiến trúc BCE) + Chương 3 (thiết kế API (40+ endpoint)) + Chương 5 (kết luận). Danh mục hình ảnh, danh mục bảng biểu. Slide thuyết trình. | 34% |
+| 3 | 23010027 | Hoàng Như Quỳnh | Backend (5 Controller + 5 Service + 5 Entity: Auth, User, Campaign, Donation, Complaint). Security: JwtUtil, JwtFilter, SecurityConfig. Unit test. | Lời mở đầu, lời cảm ơn. Thuật ngữ (128 thuật ngữ). Yêu cầu phi chức năng NF1–NF8 (53 yêu cầu). Phạm vi dự án + Chương 2 (phân tích kiến trúc hệ thống). Slide thuyết trình. | 32% |
 
 <details>
 <summary><b>Chi tiết phân công theo thành viên</b></summary>
@@ -440,12 +440,19 @@ volumes:
 - Backend: InventoryController, DeliveryController, VolunteerGroupController, SupportRequestController, LedgerController, NotificationController, DashboardController, DisasterController, WarehouseController, FileUploadController (10 Controller + 10 Service + 12 Entity + DTO + Repository). Config: DataInitializer, OpenApiConfig, CorsConfig.
 - Frontend: AppContext.jsx (Context API), api.js (15 service object), App.jsx (React Router + ProtectedRoute), 37 trang JSX (admin 9, donor 8, finance 3, local 5, citizen 4, volunteer 5, public 5), components (DashboardLayout, Sidebar, PageTransition, Toast).
 - DevOps: docker-compose.yml, Dockerfile backend (multi-stage), Dockerfile frontend (Nginx).
+  
+**Lập trình và thiết kế giao diện:**
+- Thiết kế sơ đồ: use-case tổng quan, 2 phân rã, deployment, 12 giao diện minh họa.
+
+**Kiểm thử tích hợp:**
+- 2 kịch bản E2E: tham gia nhóm TNV, khiếu nại.
 
 **Tài liệu:**
 - Chương 1: đặc tả 24 use-case chi tiết, yêu cầu chức năng R0–R6, bảng ánh xạ, sơ đồ use-case.
-- Chương 3: class diagram, ERD (35+ bảng), thiết kế API (40+ endpoint).
+- Chương 3: class diagram, ERD (35+ bảng).
 - Chương 4: lựa chọn công nghệ, cấu trúc mã nguồn, design pattern, deployment.
 - Biên tập và chỉnh sửa toàn bộ báo cáo.
+- README Github.
 
 ---
 
@@ -453,17 +460,17 @@ volumes:
 
 **Lập trình và thiết kế giao diện:**
 - Thiết kế UI/UX cho 6 dashboard, Tailwind CSS theme 6 vai trò, Framer Motion animation, Recharts biểu đồ.
-- Thiết kế toàn bộ sơ đồ: use-case tổng quan, 6 phân rã, sequence, class diagram, ERD, architecture, deployment, 24 giao diện minh họa.
+- Thiết kế sơ đồ: use-case tổng quan, 4 phân rã, sequence, class diagram, ERD, architecture, deployment, 12 giao diện minh họa.
 
 **Kiểm thử tích hợp:**
-- 5 kịch bản E2E: đóng góp chuyển khoản, quy trình 6 bước, tham gia nhóm TNV, khiếu nại, sổ cái.
+- 3 kịch bản E2E: đóng góp chuyển khoản, quy trình 6 bước, sổ cái.
 
 **Tài liệu:**
 - Chương 2: phân tích use-case, kiến trúc BCE, sequence diagram.
+- Chương 3: thiết kế API (40+ endpoint).
 - Chương 5: kết luận (kết quả, hạn chế, đề xuất).
 - Danh mục hình ảnh, danh mục bảng biểu.
-- Slide thuyết trình (25 slide).
-- README GitHub.
+- Slide thuyết trình.
 
 ---
 
@@ -479,6 +486,8 @@ volumes:
 - Thuật ngữ (128 thuật ngữ, 8 nhóm chủ đề).
 - Yêu cầu phi chức năng NF1–NF8 (53 yêu cầu chi tiết).
 - Phạm vi dự án (6 loại phạm vi).
+- Chương 2: phân tích kiến trúc hệ thống.
+- Slide thuyết trình.
 
 </details>
 
