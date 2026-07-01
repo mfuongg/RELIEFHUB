@@ -427,7 +427,7 @@ volumes:
 
 | STT | MSSV | Họ và tên | Lập trình | Tài liệu | Đóng góp |
 |---|---|---|---|---|---|
-| 1 | 23012156 | Ngô Thị Minh Phương | Backend (10 Controller + 10 Service + 12 Entity) + Frontend (AppContext, api.js, 37 trang JSX, components) + Docker Compose. Thiết kế sơ đồ. Kiểm thử tích hợp E2E. | Chương 1 (24 use-case đặc tả, R0–R6) + Chương 3 (thiết kế: class diagram, ERD(35+ bảng)) + Chương 4 (cài đặt: công nghệ, design pattern, deployment). Biên tập và chỉnh sửa toàn bộ báo cáo. README Github | 34% |
+| 1 | 23012156 | Ngô Thị Minh Phương | Backend (10 Controller + 10 Service + 12 Entity) + Frontend (AppContext, api.js, 37 trang JSX, components) + Docker Compose. Thiết kế sơ đồ. Kiểm thử tích hợp E2E. | Chương 1 (24 use-case đặc tả, R0–R6) + Chương 3 (thiết kế: class diagram, ERD(35+ bảng)) + Chương 4 (cài đặt: công nghệ, design pattern, deployment). Biên tập và chỉnh sửa toàn bộ báo cáo. README Github. | 34% |
 | 2 | 23010871 | Nguyễn Thị Thu Giang | Frontend UI/UX (6 dashboard, Tailwind theme, Framer Motion, Recharts). Thiết kế sơ đồ (use-case, sequence, class, ERD, architecture, deployment). Kiểm thử tích hợp E2E. | Chương 2 (phân tích use-case, kiến trúc BCE) + Chương 3 (thiết kế API (40+ endpoint)) + Chương 5 (kết luận). Danh mục hình ảnh, danh mục bảng biểu. Slide thuyết trình. | 34% |
 | 3 | 23010027 | Hoàng Như Quỳnh | Backend (5 Controller + 5 Service + 5 Entity: Auth, User, Campaign, Donation, Complaint). Security: JwtUtil, JwtFilter, SecurityConfig. Unit test. | Lời mở đầu, lời cảm ơn. Thuật ngữ (128 thuật ngữ). Yêu cầu phi chức năng NF1–NF8 (53 yêu cầu). Phạm vi dự án + Chương 2 (phân tích kiến trúc hệ thống). Slide thuyết trình. | 32% |
 
