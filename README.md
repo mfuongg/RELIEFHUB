@@ -55,7 +55,6 @@ Về mặt kỹ thuật, đây là ứng dụng **full-stack** theo kiến trúc
 
 ### Sáu vai trò người dùng (RBAC)
 
-Số trang là số file JSX thực tế trong `frontend/src/pages/<role>/`; màu theme lấy từ `frontend/src/components/DashboardLayout.jsx`.
 
 | Vai trò | Màu theme | Số trang | Chức năng cốt lõi |
 |---|---|---|---|
@@ -67,7 +66,7 @@ Số trang là số file JSX thực tế trong `frontend/src/pages/<role>/`; mà
 | **Tình nguyện viên** (volunteer) | `rose-500 → rose-700` | 6 | Nhóm tình nguyện, vận chuyển, trao hàng, hồ sơ kỹ năng |
 | *(Công khai)* | — | 7 | Trang chủ, đăng nhập, đăng ký, danh sách & chi tiết chiến dịch, bảng xếp hạng tài trợ, tra cứu vận chuyển |
 
-> Tổng cộng **43 trang JSX**. Lưu ý `frontend/src/pages/volunteer/Report.jsx` hiện **không được khai báo route** trong `App.jsx` (5 route của dashboard tình nguyện viên: Tổng quan, Nhóm, Vận chuyển, Trao hàng, Thông tin cá nhân).
+> Tổng cộng **43 trang JSX**.
 
 ### Điểm nổi bật
 
@@ -80,7 +79,7 @@ Số trang là số file JSX thực tế trong `frontend/src/pages/<role>/`; mà
 - **Swagger UI** tự động tại `/api/swagger-ui.html`.
 - **Bộ dữ liệu mẫu** sẵn sàng demo: 4 chiến dịch, 4 thiên tai, 8 mặt hàng kho, 5 đóng góp, 4 yêu cầu hỗ trợ, 3 chuyến giao hàng, 6 bút toán sổ cái, 2 nhóm TNV, 2 khiếu nại, 4 thông báo.
 
-### Chức năng theo vai trò (trích từ bảng route thực tế)
+### Chức năng theo vai trò 
 
 ```text
 /dashboard/admin     → Tổng quan · Tài khoản · Kho hàng · Chiến dịch · Nhiệm vụ TNV
@@ -170,8 +169,6 @@ Số trang là số file JSX thực tế trong `frontend/src/pages/<role>/`; mà
 | MySQL 8 / MariaDB (utf8mb4) | CSDL quan hệ, 45 bảng, `InnoDB` (ACID) |
 | H2 in-memory | CSDL cho test/CI |
 | 4 view + 2 stored procedure | `active_users`, `v_campaign_summary`, `v_need_status`, `v_complaint_history`; `restock_inventory()`, `advance_need_status()` |
-
-> ⚠️ **Về Docker:** mẫu README trước đây có mục Docker Compose/Nginx, nhưng **gói source hiện tại không chứa** `Dockerfile`, `docker-compose.yml` hay cấu hình Nginx (đã kiểm tra bằng `find` trên toàn bộ repository). Vì vậy phần triển khai bằng container được ghi là *đề xuất bổ sung* ở mục 11, không phải tính năng đã có.
 
 ---
 
@@ -309,7 +306,7 @@ npm install
 npm run dev
 ```
 
-Frontend: **http://localhost:5173** — biến `VITE_API_URL` trong `.env` trỏ tới backend. Nếu gặp CORS, bật `server.proxy` trong `vite.config.js` (khối proxy đã được chú thích sẵn).
+Frontend: **http://localhost:5173** — biến `VITE_API_URL` trong `.env` trỏ tới backend. Nếu gặp CORS, bật `server.proxy` trong `vite.config.js` .
 
 ### Bước 5 — Đăng nhập
 
@@ -333,16 +330,11 @@ Sáu tài khoản được seed trong `backend/reliefhub_database.sql` (cột `p
 |---|---|---|---|
 | Quản trị viên | `admin` | `admin123` | `/dashboard/admin` |
 | Nhà tài trợ | `donor01` | `donor123` | `/dashboard/donor` |
-| Ban tài chính | `finance01` | **`fin123`** | `/dashboard/finance` |
+| Ban tài chính | `finance01` | `fin123` | `/dashboard/finance` |
 | Cán bộ địa phương | `local01` | `local123` | `/dashboard/local` |
 | Người dân | `citizen01` | `citizen123` | `/dashboard/citizen` |
 | Tình nguyện viên | `volunteer01` | `vol123` | `/dashboard/volunteer` |
 
-> ⚠️ **Hai nguồn tài khoản đang không khớp nhau** — cần đồng bộ trước khi nộp/demo:
-> - **SQL seed:** `finance01` dùng mật khẩu **`fin123`**.
-> - **Dữ liệu seed ở frontend** (`AppContext.jsx`): `finance01` dùng **`finance123`**, và có thêm `donor02`, `local02`, `citizen02`, `volunteer02` (tổng **11 tài khoản**), trong đó `local03` ở trạng thái `pending_approval` để minh họa luồng chờ Admin phê duyệt.
->
-> Trang đăng nhập hiện đối chiếu với dữ liệu seed trong `AppContext.jsx`, **không** gọi `/auth/login` của backend (xem mục 12 — Ghi chú kiểm chứng).
 
 ---
 
@@ -517,8 +509,6 @@ cd frontend && npm run build && npm run lint
 
 ## 🐳 Triển khai (Deployment)
 
-Gói source **chưa có cấu hình container** — không tìm thấy `Dockerfile`, `docker-compose.yml` hay cấu hình Nginx. Để triển khai, hiện có hai cách đã được kiểm chứng trong hướng dẫn:
-
 ```bash
 # Cách 1 — Backend đóng gói JAR, chạy trực tiếp
 cd backend && mvn clean package -DskipTests
@@ -538,14 +528,14 @@ cd frontend && npm run build     # → dist/ (có thể deploy lên Nginx/Hostin
 |---|---|---|
 | `application.yml` **hardcode** `app.jwt.secret` (`"ReliefHubSecretKey2026..."`) | Lộ khoá ký JWT → giả mạo token | Đưa ra biến môi trường `${JWT_SECRET}`, dùng chuỗi ngẫu nhiên ≥ 64 ký tự, xoay khoá |
 | `application.yml` ghi `username: root` / `password: root` | Lộ thông tin CSDL | Dùng `.env` + biến môi trường |
-| `reliefhub_database.sql` seed **mật khẩu plain-text** cho 6 tài khoản | Bất kỳ ai có file đều biết mật khẩu | Giữ nguyên cho môi trường demo, nhưng **không dùng cho production**; ghi rõ trong README |
+| `reliefhub_database.sql` seed **mật khẩu plain-text** cho 6 tài khoản | Bất kỳ ai có file đều biết mật khẩu |
 | Repository **không có `.gitignore`** | Rác IDE/OS (`.DS_Store`, `target/`, `node_modules/`, `dist/`) bị commit | Bổ sung `.gitignore` cho Java + Node + IDE |
 | Không có `.env.example` mặc dù có `.env` | Người clone thiếu mẫu cấu hình | Thêm `.env.example` với giá trị rỗng |
 | Không có file `LICENSE` | Không rõ quyền sử dụng | Thêm `LICENSE` (MIT) nếu muốn công khai |
 
 ---
 
-## 🧹 Ghi chú kiểm chứng — mẫu README cũ vs. mã nguồn thực tế
+## 🧹 Ghi chú kiểm chứng 
 
 
 | Mục | README mẫu ghi | Mã nguồn thực tế |
@@ -568,8 +558,6 @@ cd frontend && npm run build     # → dist/ (có thể deploy lên Nginx/Hostin
 | File SQL trùng lặp | — | `reliefhub_database.sql` xuất hiện **3 bản y hệt** (gốc, `backend/`, `frontend/`) và `reliefhub_full.sql` **2 bản** (md5 giống nhau) → nên giữ 1 bản trong `database/` |
 | Rác hệ điều hành | — | Có `.DS_Store` ở thư mục gốc và thư mục lồng `ReliefHub.zip/` |
 | Maven Wrapper | — | `backend/` **không có** `mvnw` ⇒ bắt buộc cài Maven |
-
-**Một điểm kỹ thuật đáng lưu ý ở frontend:** `AppContext.jsx` (826 dòng) chứa **toàn bộ dữ liệu seed** (tài khoản, chiến dịch, đóng góp, kho, thiên tai, nhóm TNV…) và hàm `login()` so khớp trực tiếp với mảng `accounts`, nên ứng dụng **chạy được độc lập không cần backend**. Trong file có 2 chỗ tham chiếu biến `API_ENABLED` (dòng 558 và 780) nhưng **không tìm thấy dòng khai báo hay import nào** cho biến này; `frontend/src/services/api.js` cũng chưa được import vào `AppContext.jsx`. Nếu gặp lỗi `API_ENABLED is not defined`, cần bổ sung `const API_ENABLED = import.meta.env.VITE_API_ENABLED === 'true';` (biến `VITE_API_ENABLED=true` đã có sẵn trong `frontend/.env`) rồi nối `api.js` vào context để dùng dữ liệu thật từ backend.
 
 ---
 
