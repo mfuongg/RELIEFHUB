@@ -16,7 +16,6 @@
 Số hóa toàn bộ quy trình cứu trợ thiên tai:
 **tiếp nhận đóng góp → phân bổ → giao hàng → báo cáo minh bạch**
 
-*Đồ án học phần Phân tích và Thiết kế Phần mềm — Nhóm 06*
 
 </div>
 
