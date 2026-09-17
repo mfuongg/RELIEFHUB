@@ -588,7 +588,7 @@ cd frontend && npm run build     # → dist/ (có thể deploy lên Nginx/Hostin
 
 <div align="center">
 
-**© 2026 ReliefHub — Nhóm 06, học phần Phân tích và Thiết kế Phần mềm**
+**© 2026 ReliefHub**
 
 Nếu dự án hữu ích, hãy để lại một ⭐ trên GitHub!
 
