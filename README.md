@@ -21,7 +21,8 @@ Số hóa toàn bộ quy trình cứu trợ thiên tai:
 
 ---
 ## 👨‍💻 Author / Creator
-**Ngô Thị Minh Phương** 
+**Ngô Thị Minh Phương** -
+
 **Nguyễn Thị Thu Giang**
 
 ---
