@@ -22,8 +22,7 @@ Số hóa toàn bộ quy trình cứu trợ thiên tai:
 ---
 ## 👨‍💻 Author / Creator
 **Ngô Thị Minh Phương** 
-* GitHub: https://github.com/mfuongg
-* Email: fuongm06@example.com
+**Nguyễn Thị Thu Giang**
 
 ---
 
